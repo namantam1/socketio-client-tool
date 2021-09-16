@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Form, Col, Button, Alert } from 'react-bootstrap';
+import { setDefault } from '../utils';
 
 export default function Connection({ connData, createConnection, eventsToListenFor, emitTo }) {
   const [formValid, setFormValid] = useState([]);
@@ -19,7 +20,7 @@ export default function Connection({ connData, createConnection, eventsToListenF
     }
 
     setFormValid(() => []);
-    createConnection(serverUrl, config);
+    createConnection(setDefault("server", serverUrl), setDefault("config", config));
   }
 
   useEffect(() => {

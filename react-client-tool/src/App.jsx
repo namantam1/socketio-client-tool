@@ -7,6 +7,7 @@ import { useEffect, useState, useRef } from 'react';
 import { io } from 'socket.io-client';
 import { Container, Row, Col, Modal, Tabs, Tab } from 'react-bootstrap';
 import { MdCloudDone, MdCloudOff } from 'react-icons/md';
+import { getDefault } from './utils';
 
 
 
@@ -21,8 +22,8 @@ function App() {
   const [connData, setConnData] = useState({
     connected: false,
     loading: false,
-    server: 'http://localhost:8080',
-    config: '{"path": "/socket.io", "forceNew": true, "reconnectionAttempts": 3, "timeout": 2000}',
+    server: getDefault("server", "localhost:8080"),
+    config: getDefault("config", '{"path": "/socket.io", "forceNew": true, "reconnectionAttempts": 3, "timeout": 2000}'),
     errors: []
   });
 
